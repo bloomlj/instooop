@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  .page-header
+    h3 Access Log
+
+  if logs
+    table.table
+      tr
+        th Lock uid
+        th Card uid
+        th Success
+        th New card
+        th User Score
+        th Score Type
+        th Date &amp; time
+        th
+      for log in logs
+        tr
+          td= log.lock_id
+          td= log.card_id
+          td
+            if(log.success)
+              h4.text-primary
+                i.fa.fa-check
+            else
+              h4.text-danger
+                i.fa.fa-times
+          td
+            if(log.new_card)
+              h4.text-primary
+                i.fa.fa-check
+            else
+              h4.text-danger
+                i.fa.fa-times
+          td=log.score
+          td=log.score_type
+          td= moment(log.createdAt).format('DD.MM.YYYY, HH:mm')
+          td.text-right
+            a.btn.btn-primary(href='/cards/' + log.card_id) Manage card
+            a.btn.btn-info(href='/access-log/' + log._id) Score
+  else
+    h4 No items in access log found

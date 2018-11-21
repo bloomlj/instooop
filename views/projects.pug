@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .page-header
+    h4 项目列表
+    a.btn(href="/projects/create") 添加新项目
+
+  if projects
+    table.table
+      tr
+        th 编号
+        th 名称
+        th 描述
+        th
+      for project in projects
+        tr
+          td
+            a(href='/upload/' +project.picture)
+              img(src='/upload/320x240' +project.picture)
+          td= project.uid
+          td= project.name
+          td= project.description
+          td.text-right
+            .btn-group
+              a.btn.btn-primary(href='/projects/' + project._id) 详细
+              a.btn.btn-primary(href='/projects/update/' + project._id) 编辑
+              a.btn.btn-danger(href='/projects/delete/' + project._id, onClick='return confirm("删除后将不能恢复，确定要删除吗?")') Delete
+  else
+    h4 No projects found

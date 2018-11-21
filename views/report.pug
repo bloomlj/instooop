@@ -1,0 +1,14 @@
+extends layout_chart
+
+block content
+  .page-header
+    h3= project.name + '评测报告'
+    p= '项目编号:'+project.uid
+  #chart(style="width: 600px;height:400px;")
+  if score
+      each val, index in score
+        ul= index + ': ' + val
+
+
+  else
+    h4 No items in access log found

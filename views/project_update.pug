@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  .page-header
+    h4= title
+
+  .page-header
+    h5 编辑项目信息
+  a(href='/upload/' +project.picture)
+    img(src='/upload/320x240' +project.picture)
+
+  form.form-horizontal(method='POST',action="/projects/"+project._id)
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label(class='col-sm-2 control-label disabled', for='uid') 编号
+      .col-sm-8
+        input.form-control(type='text', name='uid', id='uid' value=project.uid disabled)
+    .form-group
+      label(class='col-sm-2 control-label', for='name') 名称
+      .col-sm-8
+        input.form-control(type='text', name='name', id='name' value=project.name)
+    .form-group
+      label(class='col-sm-2 control-label', for='description') 介绍
+      .col-sm-8
+        textarea.form-control(name='description', id='description', rows='7')= project.description
+    .form-group
+      label(class='col-sm-2 control-label', for='materials') 材料
+      .col-sm-8
+        textarea.form-control(name='materials', id='materials', rows='7')= project.materials
+    .form-group
+      label(class='col-sm-2 control-label', for='tools') 工具
+      .col-sm-8
+        textarea.form-control(name='tools', id='tools', rows='7')= project.tools
+    each setp,index in project.setps
+      .form-group
+        label(class='col-sm-2 control-label setps', for='setps'+index)= '步骤'+index
+        .col-sm-8
+          textarea.form-control(name='setps['+index+']', id='setps'+index, rows='7')= setp
+    .form-group
+      label(class='col-sm-2 control-label', for='tips') 小贴士
+      .col-sm-8
+        textarea.form-control(name='tips', id='tips', rows='7')= project.tips
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit')
+          i.fa.fa-envelope
+          | 更新

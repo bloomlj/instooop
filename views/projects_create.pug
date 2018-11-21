@@ -1,0 +1,61 @@
+extends layout
+
+block content
+  .page-header
+    h4 添加新项目
+
+  form.form-horizontal(method='POST',action="/projects",enctype="multipart/form-data")
+    input(type='hidden',id='_csrf', name='_csrf', value=_csrf)
+    .form-group
+      label(class='col-sm-2 control-label', for='uid') 编号
+      .col-sm-8
+        input.form-control(type='text', name='uid', id='uid')
+    .form-group
+      label(class='col-sm-2 control-label', for='name') 名称
+      .col-sm-8
+        input.form-control(type='text', name='name', id='name')
+    .form-group
+      label(class='col-sm-2 control-label', for='picture') 图片
+      .col-sm-8
+        input.form-control(type='file', name='picture', id='picture')
+    .form-group
+      label(class='col-sm-2 control-label', for='description') 描述
+      .col-sm-8
+        textarea.form-control(name='description', id='description', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label', for='materials') 材料
+      .col-sm-8
+        textarea.form-control(name='materials', id='materials', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label', for='tools') 工具
+      .col-sm-8
+        textarea.form-control(name='tools', id='tools', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label setps', for='setps1') 步骤一
+      .col-sm-8
+        textarea.form-control(name='setps[]', id='setps1', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label setps', for='setps2') 步骤二
+      .col-sm-8
+        textarea.form-control(name='setps[]', id='setps2', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label setps', for='setps3') 步骤三
+      .col-sm-8
+        textarea.form-control(name='setps[]', id='setps2', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label setps', for='setps4') 步骤四
+      .col-sm-8
+        textarea.form-control(name='setps[]', id='setps4', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label setps', for='setps5') 步骤五
+      .col-sm-8
+        textarea.form-control(name='setps[]', id='setps5', rows='7')
+    .form-group
+      label(class='col-sm-2 control-label', for='tips') 小贴士
+      .col-sm-8
+        textarea.form-control(name='tips', id='tips', rows='7')
+    .form-group
+      .col-sm-offset-2.col-sm-8
+        button.btn.btn-primary(type='submit',id="submit")
+          i.fa.fa-envelope
+          | 保存

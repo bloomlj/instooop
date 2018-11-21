@@ -1,0 +1,41 @@
+.container
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    a.navbar-brand(href='/')
+      img.pull-left(src='/favicon.png' width='20')
+      | instooop
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse
+      ul.nav.mr-md-auto
+        if user
+          li(class=(title == 'Projects') ? 'active' : undefined)
+            a(href='/projects') Projects
+          //li(class=(title == 'Locks') ? 'active' : undefined)
+            //a(href='/locks') Locks
+          //li(class=(title == 'Cards') ? 'active' : undefined)
+           //a(href='/cards') Cards
+          //li(class=(title == 'Access Log') ? 'active' : undefined)
+            //a(href='/access-log') Access Log
+          //li(class=(title == 'Score Report') ? 'active' : undefined)
+            //a(href='/access-log/score/report') Score Report
+      ul.nav.justify-content-end
+        if !user
+          li(class=(title == 'Login') ? 'active' : undefined)
+            a(href='/login') Login
+          li(class=(title == 'Create Account') ? 'active' : undefined)
+            a(href='/signup') Create Account
+        else
+          li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              if user.profile.picture
+                img(src=user.profile.picture)
+              else
+                img(src=user.gravatar(60))
+              span= user.profile.name || user.email || user.id
+              i.caret
+            ul.dropdown-menu
+              li
+                a(href='/account') My Account
+              li.divider
+              li
+                a(href='/logout') Logout

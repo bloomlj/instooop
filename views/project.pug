@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .page-header
+    h4= title
+
+  .page-header
+  a(href='/upload/' +project.picture)
+    img(src='/upload/320x240' +project.picture)
+
+  ul
+    li
+      b 编号:
+      = project.uid
+    li
+      b 项目名称:
+      = project.name
+    li
+      b 简介
+      = project.description
+    li
+      b 材料
+      = project.materials
+    li
+      b 工具
+      = project.tools
+    li
+      b 步骤
+      ol
+        each setp,index in project.setps
+          li= setp
+    li
+      b 小贴士
+      = project.tips
