@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='robots' content='noindex,nofollow')
+    meta(name='theme-color' content='#4DA5F4')
+    meta(name='csrf-token', content=_csrf)
+    title #{title} - Comfortest
+    link(rel='shortcut icon', href='/favicon.png')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet',href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css")
+    link(rel='stylesheet',href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css")
+
+
+  body
+    include partials/header
+
+    .container
+      include partials/flash
+      block content
+
+    include partials/footer
+
+    script(src='/js/lib/jquery-3.3.1.slim.min.js')
+    script(src='/js/lib/popper.min.js')
+    script(src='/js/lib/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/froala-editor@2.9.0/js/froala_editor.pkgd.min.js')
+    script(src='/js/main.js')
